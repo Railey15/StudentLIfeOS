@@ -26,15 +26,19 @@ class DashboardHeader extends StatelessWidget {
           child: Container(
             width: 54,
             height: 54,
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.circular(18),
-              gradient: const LinearGradient(
-                colors: [AppPalette.brightRed, AppPalette.navy],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppPalette.navy.withValues(alpha: 0.10),
+                  blurRadius: 14,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
-            child: const Icon(Icons.school_rounded, color: Colors.white, size: 28),
+            child: Image.asset('lib/logo/logo.png'),
           ),
         ),
         const SizedBox(width: 14),

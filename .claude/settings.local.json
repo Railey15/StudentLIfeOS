@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path 'c:\\\\Projects\\\\studentlifeos\\\\lib' -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path 'c:\\\\Projects\\\\studentlifeos\\\\lib' -Recurse -File | Where-Object {$_.Extension -eq '.dart'} | Select-Object -ExpandProperty FullName | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path 'c:\\\\Projects\\\\studentlifeos\\\\lib' -Recurse -File | Where-Object {$_.Extension -in '.png', '.jpg', '.jpeg', '.svg', '.gif'} | Select-Object -ExpandProperty FullName)"
+    ]
+  }
+}

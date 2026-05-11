@@ -53,10 +53,10 @@ class StudentLifeController extends ChangeNotifier {
   String? errorMessage;
 
   Future<void> initialize() async {
-    isAuthenticated = service.currentUser != null;
-    if (isAuthenticated) {
-      await refreshAll();
+    if (service.currentUser != null) {
+      await service.signOut();
     }
+    isAuthenticated = false;
     isBootstrapping = false;
     notifyListeners();
   }

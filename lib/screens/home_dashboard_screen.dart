@@ -49,12 +49,7 @@ class HomeDashboardScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Hero banner
-                HeroBanner(
-                  title: 'Stay ahead in school, budget, and campus life.',
-                  description:
-                      'Deadlines, spending, chats, marketplace, and projects — all in one student OS.',
-                  badge: 'Student Life OS',
-                ),
+                const _HeroBannerWithLogo(),
                 const SizedBox(height: 24),
 
                 // Quick stats
@@ -136,6 +131,103 @@ class HomeDashboardScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _HeroBannerWithLogo extends StatelessWidget {
+  const _HeroBannerWithLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: AppPalette.navy.withValues(alpha: 0.30),
+            blurRadius: 32,
+            offset: const Offset(0, 16),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Stack(
+          children: [
+            // Background gradient + text content
+            Container(
+              padding: const EdgeInsets.fromLTRB(24, 26, 140, 26),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF050D1C), Color(0xFF091830), AppPalette.navy],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.14),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Text(
+                      'Student Life OS',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Stay ahead in school, budget, and campus life.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w800,
+                      height: 1.3,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Deadlines, spending, chats, and marketplace — all in one place.',
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.65),
+                      fontSize: 12,
+                      height: 1.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Logo as large watermark on the right
+            Positioned(
+              right: -28,
+              top: -12,
+              bottom: -12,
+              child: Align(
+                alignment: Alignment.center,
+                child: Opacity(
+                  opacity: 0.22,
+                  child: Image.asset(
+                    'lib/logo/logo.png',
+                    width: 150,
+                    height: 150,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
